@@ -1,16 +1,16 @@
-let map = L.map('baseMap').setView([22.39, 114.10], 8)
-L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg').addTo(map)
-let marker = L.marker([22, 114]).addTo(map)
-let polygon = L.polygon([
-  [22.532, 114.453],
-  [22.511, 114.013],
-  [22.1709, 113.8737],
-  [22.181, 114.4585]
-]).addTo(map);
-let line = L.polyline([
-    [20.145347, 106.189696],
-    [22.844540, 112.735081],
-    [23.369994, 114.492096]
-], {color: 'purple'}).addTo(map);
-marker.bindPopup('Area of interest')
-polygon.bindPopup('Hong Kong')
+let map = L.map('baseMap').setView([36, -95], 3.5)
+let warnings_c = 'https://mesonet.agron.iastate.edu/cgi-bin/wms/us/wwa.cgi';
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
+
+
+L.esri.dynamicMapLayer({
+  url: 'https://mapservices.nps.gov/arcgis/rest/services/LandResourcesDivisionTractAndBoundaryService/MapServer',
+  attribution: 'National Park Service'
+}).addTo(map)
+
+L.tileLayer.wms('https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WMSServer', {
+  layers: '2',
+  format: 'image/png',
+  transparent: true,
+  attribution: 'NOAA'
+}).addTo(map)
