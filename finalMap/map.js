@@ -8,6 +8,7 @@ function init () {
                     + feature.properties.Food_Type+'<br>'
                     + feature.properties.Price);
   }
+  
   let options = {
     onEachFeature: popUp
    }
